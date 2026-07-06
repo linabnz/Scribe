@@ -75,6 +75,13 @@ docs/_build/
 .pybuilder/
 target/
 
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.DS_Store
 # Jupyter Notebook
 .ipynb_checkpoints
 
