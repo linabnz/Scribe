@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+comptes_rendus/
 # Distribution / packaging
 .Python
 build/
