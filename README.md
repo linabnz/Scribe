@@ -40,7 +40,7 @@ Cette clé n'est jamais écrite en dur dans le code. Elle est chargée à l'exé
 ## Utilisation
 
 ```bash
-python src/cli.py audio_samples/reunion.mp3
+python src/cli.py audio_samples/audiotest.mp4
 ```
 
 Le programme affiche sa progression au fur et à mesure : transcription en cours, puis rédaction du compte rendu. Une fois terminé, le résultat s'affiche dans le terminal et un fichier est créé dans le dossier `comptes_rendus`, nommé par exemple `compte_rendu_2026-07-06_143000.md`.
