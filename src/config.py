@@ -13,3 +13,5 @@ if not GROQ_API_KEY:
 
 STT_MODEL = "whisper-large-v3-turbo"
 LLM_MODEL = "llama-3.3-70b-versatile"
+TTS_MODEL = "playai-tts"  
+TTS_VOICE = "Fritz-PlayAI"

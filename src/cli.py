@@ -1,15 +1,10 @@
-"""
-Interface en ligne de commande de Scribe.
-
-
-"""
-
 import argparse
 import sys
 from datetime import datetime
 from pathlib import Path
 
 from config import STT_MODEL
+from moderation import check_content
 from summary import generate_summary
 from transcriber import transcribe_audio
 
@@ -35,9 +30,19 @@ def main():
         sys.exit(1)
     print("Transcription terminée.")
 
+    print("Vérification du contenu en cours...")
+    try:
+        if not check_content(transcript.text):
+            print("Ce fichier audio semble détourner l'outil de son usage prévu. Traitement annulé.")
+            sys.exit(1)
+    except RuntimeError as exc:
+        print(f"Erreur lors de la modération : {exc}")
+        sys.exit(1)
+    print("Contenu validé.")
+
     print("Rédaction du compte rendu en cours...")
     try:
-        compte_rendu = generate_summary(transcript)
+        compte_rendu = generate_summary(transcript.text)
     except RuntimeError as exc:
         print(f"Erreur lors de la génération du compte rendu : {exc}")
         sys.exit(1)
@@ -49,8 +54,7 @@ def main():
     horodatage = datetime.now().strftime("%Y-%m-%d_%H%M%S")
     output_path = OUTPUT_DIR / f"compte_rendu_{horodatage}.md"
     output_path.write_text(compte_rendu, encoding="utf-8")
-
-    print(f"\n Compte rendu sauvegardé dans : {output_path}")
+    print(f"\nCompte rendu sauvegardé dans : {output_path}")
 
 
 if __name__ == "__main__":
