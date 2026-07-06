@@ -11,6 +11,5 @@ if not GROQ_API_KEY:
         "et renseigne ta clé API Groq."
     )
 
-# Seul endroit du projet où les noms de modèles apparaissent
-STT_MODEL = "whisper-large-v3"
+STT_MODEL = "whisper-large-v3-turbo"
 LLM_MODEL = "llama-3.3-70b-versatile"
